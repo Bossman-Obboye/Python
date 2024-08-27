@@ -29,3 +29,7 @@ age = input("Enter your age: ")
 
 # Print a personalized message
 print(f"Hello, {name}! You are {age} years old.")
+
+
+response = input('Are you satisfied? : ')
+print(f"Thanks for responding, {response}")
