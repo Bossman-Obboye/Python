@@ -8,12 +8,12 @@ num2 = input("Enter second number: ")
 operator = input("Enter an operator: ")
 
 if operator == "+" :
-    print(f"{num1} + {num2} = {int(num1) + int(num2)}")
+    print(f"Result: {num1} + {num2} = {int(num1) + int(num2)}")
 elif operator == "-" :
-     print(f"{num1} - {num2} = {int(num1) - int(num2)}")
+     print(f"Result: {num1} - {num2} = {int(num1) - int(num2)}")
 elif operator == "/" :
-     print(f"{num1} - {num2} = {int(num1) / int(num2)}")
+     print(f"Result: {num1} - {num2} = {int(num1) / int(num2)}")
 elif operator == "*":
-     print(f"{num1} x {num2} = {int(num1) * int(num2)}")
+     print(f"Result: {num1} x {num2} = {int(num1) * int(num2)}")
 else :
     print('Error occurred. Please check your inputs and try again.')
