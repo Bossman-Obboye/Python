@@ -19,4 +19,6 @@ for i in range(5) :
     # Assign name
     list_of_names.append(name)
 
-print(list_of_names)
+print('These are the names in uppercases: ')
+for i in list_of_names:
+    print(i)
