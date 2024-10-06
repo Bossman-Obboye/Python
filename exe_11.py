@@ -29,7 +29,7 @@ for attempt in range(attempts):
     # Check the validation of inputs
     while True :
         if not re.match(pattern, guess):
-            print(f"{guess} isn't valid, please enter a valid number(1-20)")
+            print(f"'{guess}' isn't valid, please enter a valid number(1-20)")
             guess = input(f"Choose your number(0-20): ")
         else :
             break
@@ -46,6 +46,7 @@ for attempt in range(attempts):
     else :
         print(f"You deserve a flower! \n{guess} is the magic number")
         break
+
 # Tell the magic number if user is unable to determine it.   
 if guess != magicNumber: print(f"The magic number was: {magicNumber} \nBetter luck next time")
         
