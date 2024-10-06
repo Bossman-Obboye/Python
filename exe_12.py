@@ -23,51 +23,45 @@ def divide(numb1, numb2) :
         return "Error! Division by Zero"
     return numb1 / numb2
 
-print("Enter Statement seperated by spaces!. Eg: x + y.z \nNB: Valid operation signs - (+, -, *, /) \n")
-
-statement = input('Statement: ')
-
-
 def calc(statement) :
-    valid_numb_pattern = r'^[+-]?\d*(\.\d+)?$'
-    valid_operator_pattern = r'^[+-*/]$'
+    valid_numb_pattern = r'^-?\d+(\.\d+)?$'
+    valid_operator_pattern = r'^[+\-*/]$'
 
     values = statement.split(' ')
     
-    try :
-        numb1 = values[0]
-        operator = values[1]
-        numb2 = values[2]
-    except :
-        numb1 = ''
-        operator = ''
-        numb2 = ''
-        return 'Unexpected Error occurred'
-        
-    print(numb1, numb2, operator)
+    if len(values) != 3 :
+      return f"Error! Statement must have 3 parts. Example: 34.32 + 32"  
+  
+    numb1,  operator, numb2= values[0], values[1], values[2]
     
     if not re.match(valid_numb_pattern, numb1):
-       return "Invalid Statement, Correct it! Eg: 34.32 + 32"
-    elif not re.match(valid_numb_pattern, numb2) :
-       return "Invalid Statement, Correct it! Eg: 34.32 + 32"
-    elif not re.match(valid_operator_pattern, operator) :
-       return "Invalid Statement, Correct it! Eg: 34.32 + 32"
-    else :
-        numb1 = float(numb1)
-        numb2 = float(numb2)
-        RESULT = ''
+        return "Invalid number: '{}' in statement".format(numb1)
+    if not re.match(valid_numb_pattern, numb2):
+        return "Invalid number: '{}' in statement".format(numb2)
+    if not re.match(valid_operator_pattern, operator):
+        return "Invalid operator: '{}' in statement. Use +, -, *, /".format(operator)
     
-        match operator :
-            case '+' :
-                RESULT = str(add(numb1, numb2))
-            case '-' :
-                RESULT = str(substract(numb1, numb2))
-            case '*' :
-                RESULT = str(multiply(numb1, numb2))
-            case '/' :
-                RESULT = str(divide(numb1, numb2))
     
-        return f"RESPONSE: {statement} = {RESULT} \nYou are always welcome."
+  
+    numb1 = float(numb1)
+    numb2 = float(numb2)
+    match operator :
+        case '+' :
+             RESULT = add(numb1, numb2)
+        case '-' :
+              RESULT = substract(numb1, numb2)
+        case '*' :
+            RESULT = multiply(numb1, numb2)
+        case '/' :
+               RESULT = divide(numb1, numb2)
+    
+    return f"Result: {numb1} {operator} {numb2} = {RESULT}"
+
+print("Enter Statement seperated by spaces!. Eg: x + y.z \nAllowed operation - (+, -, *, /)")
+
+# Asking user for input
+statement = input('Statement: ')
+
 
 print(calc(statement))
             
